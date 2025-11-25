@@ -8,7 +8,7 @@ from typing import Iterable
 import numpy as np
 import pandas as pd
 
-DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "NFHS_Factsheet.csv"
+DATA_PATH = "data/NFHS_Factsheet.csv"
 STATE_COLUMN = "States/UTs"
 
 GOOD_INDICATORS = [
