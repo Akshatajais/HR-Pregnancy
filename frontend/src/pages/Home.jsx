@@ -4,7 +4,7 @@ import ResultCard from '../components/ResultCard.jsx'
 import SectionCard from '../components/SectionCard.jsx'
 import { generateRandomCase } from '../utils/randomizer.js'
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5173'
 
 const initialForm = {
   age: 30,
