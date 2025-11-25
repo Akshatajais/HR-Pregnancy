@@ -7,8 +7,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from .model_loader import load_model
-from .scoring import (
+from model_loader import load_model
+from scoring import (
     LifestyleInputs,
     categorize_score,
     compute_lifestyle_score,
