@@ -3,19 +3,16 @@ import joblib
 
 _MODEL_CACHE = {}
 
-# Since main.py is in root, model_loader.py is also in root.
-# The model is inside ./data/stacking_model.joblib
 MODEL_PATH = Path(__file__).resolve().parent / "data" / "stacking_model.joblib"
 
-
 def load_model():
-    """Load and cache the stacking model from ./data."""
+    """Load and cache the ML model from /data/stacking_model.joblib"""
     if "stacking" in _MODEL_CACHE:
         return _MODEL_CACHE["stacking"]
 
-    if MODEL_PATH.exists():
-        model = joblib.load(MODEL_PATH)
-        _MODEL_CACHE["stacking"] = model
-        return model
+    if not MODEL_PATH.exists():
+        raise FileNotFoundError(f"Model file not found at: {MODEL_PATH}")
 
-    raise FileNotFoundError(f"Model not found at: {MODEL_PATH}")
+    model = joblib.load(MODEL_PATH)
+    _MODEL_CACHE["stacking"] = model
+    return model
