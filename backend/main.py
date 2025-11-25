@@ -7,14 +7,24 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from model_loader import load_model
-from scoring import (
-    LifestyleInputs,
-    categorize_score,
-    compute_lifestyle_score,
-    compute_nfhs_score,
-    list_states,
-)
+try:  # pragma: no cover - runtime compatibility
+    from .model_loader import load_model
+    from .scoring import (
+        LifestyleInputs,
+        categorize_score,
+        compute_lifestyle_score,
+        compute_nfhs_score,
+        list_states,
+    )
+except ImportError:
+    from model_loader import load_model  # type: ignore
+    from scoring import (  # type: ignore
+        LifestyleInputs,
+        categorize_score,
+        compute_lifestyle_score,
+        compute_nfhs_score,
+        list_states,
+    )
 
 app = FastAPI(title="Maternal Health Risk Calculator API")
 
